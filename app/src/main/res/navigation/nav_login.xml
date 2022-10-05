@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_login"
+    app:startDestination="@id/fragmentClientOrRestaurant">
+
+    <fragment
+        android:id="@+id/fragmentRegister"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentRegister"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentClientData"
+            app:destination="@id/fragmentClientData" />
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentRestaurantData"
+            app:destination="@id/fragmentRestaurantData" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentClientOrRestaurant"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentClientOrRestaurant"
+        android:label="fragment_client_or_restaurant"
+        tools:layout="@layout/fragment_client_or_restaurant" >
+        <action
+            android:id="@+id/action_fragmentClientOrRestaurant_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNewTown"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentNewTown"
+        android:label="fragment_new_town"
+        tools:layout="@layout/fragment_new_town" />
+    <fragment
+        android:id="@+id/fragmentClientData"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentClientData"
+        android:label="fragment_client_data"
+        tools:layout="@layout/fragment_client_data" >
+        <action
+            android:id="@+id/action_fragmentClientData_to_fragmentRegister"
+            app:destination="@id/fragmentRegister" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRestaurantData"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentRestaurantData"
+        android:label="fragment_restaurant_data"
+        tools:layout="@layout/fragment_restaurant_data" >
+        <action
+            android:id="@+id/action_fragmentRestaurantData_to_fragmentRegister"
+            app:destination="@id/fragmentRegister" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.deliveryapp.main_activity_and_fragments.FragmentLogin"
+        android:label="FragmentLogin" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentClientOrRestaurant"
+            app:destination="@id/fragmentClientOrRestaurant" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentRegister"
+            app:destination="@id/fragmentRegister" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentNewTown"
+            app:destination="@id/fragmentNewTown" />
+    </fragment>
+</navigation>
