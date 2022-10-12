@@ -10,7 +10,7 @@ import com.example.deliveryapp.tables.Restaurant
 class RestaurantsAdapter(
     var restaurants: ArrayList<Restaurant>
 ): RecyclerView.Adapter<RestaurantsAdapter.RestaurantViewHolder>() {
-    private val diffCallback = DiffCallback(restaurants, ArrayList())
+    private val diffCallback = DiffCallbackRestaurant(restaurants, ArrayList())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

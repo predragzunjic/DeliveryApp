@@ -12,5 +12,7 @@ class LoggedInRepository @Inject constructor(
 
     fun getRestaurants() = restaurantDao.getRestaurants()
 
+    fun getCategories() = restaurantDao.getCategories()
+
     suspend fun getRestaurant(email: String?, password: String?) = restaurantDao.getRestaurant(email, password)
 }

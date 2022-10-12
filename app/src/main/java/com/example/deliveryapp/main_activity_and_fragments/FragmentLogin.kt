@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.deliveryapp.activity_client_and_fragments.ActivityClient
 import com.example.deliveryapp.R
 import com.example.deliveryapp.LoginRegisterViewModel
+import com.example.deliveryapp.activity_restaurant_and_fragments.ActivityRestaurant
 import com.example.deliveryapp.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,11 +56,10 @@ class FragmentLogin : Fragment() {
         else{
             if(clientOrRestaurant.equals("client")){
                 val client = viewModel.getClient(email, password)
-                Log.d("tag1", "${client?.email} ${client?.password}")
-                Log.d("tag1", clientOrRestaurant.toString())
                 if(client?.email.equals(email) && client?.password.equals(password)){
                     activity?.let{
                         val intent = Intent (it, ActivityClient::class.java)
+                        intent.putExtra("idClient", client?.id_client)
                         it.startActivity(intent)
                     }
                 }
@@ -75,7 +75,11 @@ class FragmentLogin : Fragment() {
                 val restaurant = viewModel.getRestaurant(email, password)
 
                 if(restaurant?.email == email && restaurant.password == password){
-                    Toast.makeText(activity, "wow, restaurant", Toast.LENGTH_SHORT).show()
+                    activity?.let{
+                        val intent = Intent (it, ActivityRestaurant::class.java)
+                        intent.putExtra("idRestaurant", restaurant?.id_restaurant)
+                        it.startActivity(intent)
+                    }
                 }
                 else{
                     Toast.makeText(activity, "Credentials don't match", Toast.LENGTH_SHORT).show()

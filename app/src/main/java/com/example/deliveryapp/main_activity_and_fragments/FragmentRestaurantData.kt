@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.deliveryapp.tables.Restaurant
 import com.example.deliveryapp.LoginRegisterViewModel
+import com.example.deliveryapp.activity_restaurant_and_fragments.ActivityRestaurant
 import com.example.deliveryapp.databinding.FragmentRestaurantDataBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -63,7 +65,7 @@ class FragmentRestaurantData : Fragment() {
 
     private fun populateSpinner(){
         val listTowns = mutableListOf<String>()
-        val adapter = ArrayAdapter(requireActivity(), R.layout.support_simple_spinner_dropdown_item,
+        val adapter = ArrayAdapter(requireActivity(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
             listTowns)
         binding.spnTown.adapter = adapter
 
@@ -94,16 +96,13 @@ class FragmentRestaurantData : Fragment() {
 
     private fun setUpButtonSaveListener(email: String?, password: String?){
         val name = binding.etName.text.toString()
-        val adress = binding.etAdress.text.toString()
+        val address = binding.etAdress.text.toString()
         val description = binding.etDescription.text.toString()
         val phoneNumber = binding.etPhoneNumber.text.toString()
 
-        if(name.isEmpty() || adress.isEmpty() || description.isEmpty() || phoneNumber.isEmpty()){
+        if(name.isEmpty() || address.isEmpty() || description.isEmpty() || phoneNumber.isEmpty()){
             Toast.makeText(activity, "One or more required fields are empty", Toast.LENGTH_SHORT).show()
             clearEditTexts()
-        }
-        else if(binding.spnTown.selectedItemPosition == 0){
-            Toast.makeText(activity, "Select a town", Toast.LENGTH_SHORT).show()
         }
         else{
             val restaurant = viewModel.getRestaurant(email, password)
@@ -114,9 +113,15 @@ class FragmentRestaurantData : Fragment() {
             }
             else{
                 viewModel.insertRestaurant(
-                    Restaurant(name, adress, description, phoneNumber, email.toString(),
+                    Restaurant(name, address, description, phoneNumber, email.toString(),
                     password.toString(), imageUri.toString(), binding.spnTown.selectedItem.toString())
                 )
+
+                activity?.let{
+                    val intent = Intent (it, ActivityRestaurant::class.java)
+                    intent.putExtra("idRestaurant", viewModel.getRestaurant(email, password)?.id_restaurant)
+                    it.startActivity(intent)
+                }
             }
         }
     }

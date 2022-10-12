@@ -3,7 +3,7 @@ package com.example.deliveryapp
 import androidx.recyclerview.widget.DiffUtil
 import com.example.deliveryapp.tables.Restaurant
 
-class DiffCallback(
+class DiffCallbackRestaurant(
     private val oldList: List<Restaurant>,
     var newList: List<Restaurant>
 ): DiffUtil.Callback(){

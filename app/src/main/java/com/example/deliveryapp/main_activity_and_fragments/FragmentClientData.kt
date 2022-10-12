@@ -1,5 +1,6 @@
 package com.example.deliveryapp.main_activity_and_fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.deliveryapp.tables.Client
 import com.example.deliveryapp.LoginRegisterViewModel
+import com.example.deliveryapp.activity_client_and_fragments.ActivityClient
 import com.example.deliveryapp.databinding.FragmentClientDataBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -74,17 +76,20 @@ class FragmentClientData : Fragment() {
     private fun setUpButtonSaveListener(email: String?, password: String?){
         val name = binding.etName.text.toString()
         val surname = binding.etSurname.text.toString()
-        val adress = binding.etAdress.text.toString()
+        val address = binding.etAdress.text.toString()
 
-        if(name.isEmpty() || surname.isEmpty() || adress.isEmpty()){
+        if(name.isEmpty() || surname.isEmpty() || address.isEmpty()){
             Toast.makeText(activity, "One or more required fields are empty", Toast.LENGTH_SHORT).show()
             clearEditTexts()
         }
-        else if(binding.spnTown.selectedItemPosition == 0){
-            Toast.makeText(activity, "Select a town", Toast.LENGTH_SHORT).show()
-        }
         else{
-            viewModel.insertClient(Client(name, surname, adress, email, password, binding.spnTown.selectedItem.toString()))
+            viewModel.insertClient(Client(name, surname, address, email, password, binding.spnTown.selectedItem.toString()))
+            activity?.let{
+                val intent = Intent(it, ActivityClient::class.java)
+                intent.putExtra("idClient",
+                    viewModel.getClient(email.toString(), password.toString())?.id_client)
+                it.startActivity(intent)
+            }
         }
     }
 
