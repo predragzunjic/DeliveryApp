@@ -28,4 +28,12 @@ class LoginRegisterRepository @Inject constructor(
     fun getTowns() = townDao.getTowns()
 
     suspend fun deleteTown(town_name: String) = townDao.deleteTown(town_name)
+
+    suspend fun deleteAllRestaurants() = restaurantDao.deleteAllRestaurants()
+
+    suspend fun getRestaurant2(email: String, password: String) = restaurantDao.getRestaurant2(email, password)
+
+    suspend fun getClient2(email: String, password: String) = clientDao.getClient2(email, password)
+
+    suspend fun townInDatabase(nameTown: String) = townDao.townInDatabase(nameTown)
 }

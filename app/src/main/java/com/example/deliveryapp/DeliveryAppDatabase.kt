@@ -18,7 +18,7 @@ import com.example.deliveryapp.tables.*
     Town::class,
     RestaurantAdditionCrossRef::class
     ],
-    version = 4
+    version = 7
 )
 abstract class DeliveryAppDatabase: RoomDatabase() {
     abstract fun getDao(): DeliveryAppDao

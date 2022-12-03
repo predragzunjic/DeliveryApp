@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_restaurant"
+    app:startDestination="@id/fragmentRestaurantShowCategories">
+
+    <fragment
+        android:id="@+id/fragmentRestaurantShowCategories"
+        android:name="com.example.deliveryapp.activity_restaurant_and_fragments.FragmentRestaurantShowCategories"
+        android:label="fragment_restaurant_show_categories"
+        tools:layout="@layout/fragment_restaurant_show_categories" >
+        <action
+            android:id="@+id/action_fragmentRestaurantShowCategories_to_fragmentRestaurantShowProducts"
+            app:destination="@id/fragmentRestaurantShowProducts" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRestaurantShowProducts"
+        android:name="com.example.deliveryapp.activity_restaurant_and_fragments.FragmentRestaurantShowProducts"
+        android:label="fragment_restaurant_show_products"
+        tools:layout="@layout/fragment_restaurant_show_products" >
+        <action
+            android:id="@+id/action_fragmentRestaurantShowProducts_to_fragmentRestaurantShowCategories"
+            app:destination="@id/fragmentRestaurantShowCategories" />
+        <action
+            android:id="@+id/action_fragmentRestaurantShowProducts_to_fragmentRestaurantAddProduct"
+            app:destination="@id/fragmentRestaurantAddProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRestaurantAddProduct"
+        android:name="com.example.deliveryapp.activity_restaurant_and_fragments.FragmentRestaurantAddProduct"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_restaurant_add_product" >
+        <action
+            android:id="@+id/action_fragmentRestaurantAddProduct_to_fragmentRestaurantShowProducts"
+            app:destination="@id/fragmentRestaurantShowProducts" />
+    </fragment>
+</navigation>

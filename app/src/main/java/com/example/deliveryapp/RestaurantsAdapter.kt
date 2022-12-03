@@ -8,7 +8,7 @@ import com.example.deliveryapp.databinding.RvRestaurantItemBinding
 import com.example.deliveryapp.tables.Restaurant
 
 class RestaurantsAdapter(
-    var restaurants: ArrayList<Restaurant>
+    var restaurants: ArrayList<Restaurant?>
 ): RecyclerView.Adapter<RestaurantsAdapter.RestaurantViewHolder>() {
     private val diffCallback = DiffCallbackRestaurant(restaurants, ArrayList())
 
@@ -28,7 +28,7 @@ class RestaurantsAdapter(
         return restaurants.size
     }
 
-    fun submitList(updatedList: List<Restaurant>){
+    fun submitList(updatedList: List<Restaurant?>){
         diffCallback.newList = updatedList
 
         val diffResult = DiffUtil.calculateDiff(diffCallback)
@@ -41,10 +41,10 @@ class RestaurantsAdapter(
 
 
     inner class RestaurantViewHolder(private val binding: RvRestaurantItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(restaurant: Restaurant){
-            binding.restaurantName.text = restaurant.name_restaurant
-            binding.restaurantDescription.text = restaurant.description
-            binding.restaurantAdress.text = restaurant.adress
+        fun bind(restaurant: Restaurant?){
+            binding.restaurantName.text = restaurant?.name_restaurant
+            binding.restaurantDescription.text = restaurant?.description
+            binding.restaurantAdress.text = restaurant?.adress
         }
     }
 }

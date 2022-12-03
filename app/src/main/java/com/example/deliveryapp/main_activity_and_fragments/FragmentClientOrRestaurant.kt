@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.deliveryapp.R
 import com.example.deliveryapp.databinding.FragmentClientOrRestaurantBinding
+import com.example.deliveryapp.viewmodels.LoginRegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FragmentClientOrRestaurant : Fragment() {
     private lateinit var binding: FragmentClientOrRestaurantBinding
+    private val viewModel: LoginRegisterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

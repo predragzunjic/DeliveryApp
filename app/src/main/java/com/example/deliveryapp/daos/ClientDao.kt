@@ -14,4 +14,7 @@ interface ClientDao {
 
     @Query("SELECT * FROM client WHERE email = :email AND password = :password")
     suspend fun getClient(email: String, password: String): Client?
+
+    @Query("SELECT EXISTS(SELECT * FROM client WHERE email = :email AND password = :password)")
+    suspend fun getClient2(email: String, password: String): Boolean
 }

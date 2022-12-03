@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity_restaurant_and_fragments.FragmentRestaurantAddProduct">
+
+    <TextView
+        android:id="@+id/tv_name_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product name"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+    />
+
+    <EditText
+        android:id="@+id/et_name_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Product name"
+        android:textSize="20sp"
+        android:inputType="textCapSentences"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_product"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/et_name_product"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/et_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Price(number)"
+        android:textSize="20sp"
+        android:inputType="textCapWords"
+        app:layout_constraintTop_toBottomOf="@id/tv_price"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/et_price"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:textSize="20sp"
+        android:inputType="textCapWords"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sale"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/et_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/et_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Can be skipped"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_sale"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_add_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add image"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/et_sale"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add product"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

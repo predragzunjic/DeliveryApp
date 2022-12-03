@@ -1,6 +1,7 @@
 package com.example.deliveryapp.tables
 
 import androidx.room.Embedded
+import androidx.room.Entity
 import androidx.room.Relation
 
 data class CategoryWithProducts(
@@ -9,5 +10,5 @@ data class CategoryWithProducts(
         parentColumn = "id_category",
         entityColumn = "id_category"
     )
-    var products: List<Product>
+    var products: List<Product?>
 )

@@ -35,7 +35,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_food"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_client" />
+            app:navGraph="@navigation/nav_restaurant" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

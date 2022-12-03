@@ -1,18 +1,15 @@
 package com.example.deliveryapp
 
-import android.media.MediaRouter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryapp.databinding.RvCategoryItemBinding
-import com.example.deliveryapp.databinding.RvRestaurantItemBinding
 import com.example.deliveryapp.tables.Category
-import com.example.deliveryapp.tables.Product
-import com.example.deliveryapp.tables.Restaurant
 
 class CategoriesAdapter(
-    var categories: ArrayList<Category>
+    private var categories: ArrayList<Category?>,
+    val listenerCategory: (Category?) -> Unit
     ): RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
         private val diffCallback = DiffCallbackCategories(categories, ArrayList())
 
@@ -32,7 +29,7 @@ class CategoriesAdapter(
             return categories.size
         }
 
-        fun submitList(updatedList: List<Category>){
+        fun submitList(updatedList: List<Category?>){
             diffCallback.newList = updatedList
 
             val diffResult = DiffUtil.calculateDiff(diffCallback)
@@ -45,8 +42,12 @@ class CategoriesAdapter(
 
 
         inner class CategoryViewHolder(private val binding: RvCategoryItemBinding): RecyclerView.ViewHolder(binding.root){
-            fun bind(category: Category){
-                binding.tvNameCategory.text = category.name_category
+            fun bind(category: Category?){
+                binding.tvNameCategory.text = category?.name_category
+
+                binding.root.setOnClickListener{
+                    listenerCategory.invoke(category)
+                }
             }
         }
 }

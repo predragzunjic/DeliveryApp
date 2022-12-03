@@ -7,12 +7,11 @@ import androidx.room.PrimaryKey
 data class Product(
     var name_product: String,
     var price: Double,
-    var sale: Double,
+    var sale: Int,
     var description: String,
     var isItOnSale: Boolean,
     var photo: String,
-    val id_category: Int,
-    val id_restaurant: Int
+    val id_category: Int
 ){
     @PrimaryKey(autoGenerate = true)
     var id_product: Int? = null
