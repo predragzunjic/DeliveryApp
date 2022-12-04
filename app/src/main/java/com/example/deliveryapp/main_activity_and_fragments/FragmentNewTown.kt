@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import com.example.deliveryapp.databinding.FragmentNewTownBinding
 import com.example.deliveryapp.viewmodels.FragmentNewTownViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -58,7 +59,7 @@ class FragmentNewTown : Fragment() {
     }
 
     private fun toastTownExistsInDatabase(){
-        Toast.makeText(activity, "This town already exists in the database", Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "This town already exists in the database", Toast.LENGTH_SHORT).show()
         clearEditText()
     }
 

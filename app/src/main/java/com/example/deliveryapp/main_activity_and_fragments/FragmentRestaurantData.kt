@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.deliveryapp.activity_restaurant_and_fragments.ActivityRestaurant
 import com.example.deliveryapp.databinding.FragmentRestaurantDataBinding
 import com.example.deliveryapp.viewmodels.FragmentRestaurantDataViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -124,7 +125,7 @@ class FragmentRestaurantData : Fragment() {
     }
 
     private fun toastEmptyField(){
-        Toast.makeText(activity, "One or more required fields are empty", Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "One or more required fields are empty", Toast.LENGTH_SHORT).show()
 
         clearEditTexts()
     }

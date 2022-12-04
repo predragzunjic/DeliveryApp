@@ -15,6 +15,7 @@ import com.example.deliveryapp.R
 import com.example.deliveryapp.viewmodels.LoginRegisterViewModel
 import com.example.deliveryapp.databinding.FragmentRegisterBinding
 import com.example.deliveryapp.viewmodels.FragmentRegisterViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -72,18 +73,19 @@ class FragmentRegister : Fragment() {
         binding.etRepeatPassword.text.clear()
     }
 
-    private fun enterCorrectValues(){
-        Toast.makeText(activity, "Please enter correct values", Toast.LENGTH_SHORT).show()
+    private fun toastFieldsEmpty(){
+        Snackbar.make(binding.root, "One or more required fields are empty", Snackbar.LENGTH_LONG).show()
         clearEditTexts()
     }
 
+
     private fun alreadyInDatabase(){
-        Toast.makeText(activity, "This profile already exists in database", Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "This profile already exists in database", Toast.LENGTH_SHORT).show()
         clearEditTexts()
     }
 
     private fun wrongRepeatedPassword(){
-        Toast.makeText(activity, "Please repeat your password correctly", Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "Please repeat your password correctly", Toast.LENGTH_SHORT).show()
         clearEditTexts()
     }
 
@@ -97,7 +99,7 @@ class FragmentRegister : Fragment() {
 
         lifecycleScope.launchWhenStarted {
             viewModel2.toastEmptyField.collectLatest {
-                enterCorrectValues()
+                toastFieldsEmpty()
             }
         }
 

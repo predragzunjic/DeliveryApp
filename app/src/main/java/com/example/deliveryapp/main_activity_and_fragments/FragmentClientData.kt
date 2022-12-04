@@ -112,7 +112,7 @@ class FragmentClientData : Fragment() {
     }
 
     private fun toastFieldsEmpty(){
-       Snackbar.make(binding.root, "One or more required fields are empty", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, "One or more required fields are empty", Snackbar.LENGTH_LONG).show()
         clearEditTexts()
     }
 

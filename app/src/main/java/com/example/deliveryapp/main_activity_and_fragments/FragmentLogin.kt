@@ -89,13 +89,13 @@ class FragmentLogin : Fragment() {
         }
     }
 
-    private fun enterCorrectValues(){
-        Snackbar.make(binding.root, "Please enter correct values", Snackbar.LENGTH_LONG).show()
+    private fun toastFieldsEmpty(){
+        Snackbar.make(binding.root, "One or more required fields are empty", Snackbar.LENGTH_LONG).show()
         clearEditTexts()
     }
 
     private fun credentialsNotMatching(){
-        Snackbar.make(binding.root, "One or more required fields are empty", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, "Credentials not matching", Snackbar.LENGTH_LONG).show()
         clearEditTexts()
     }
 
@@ -120,7 +120,7 @@ class FragmentLogin : Fragment() {
 
         lifecycleScope.launchWhenStarted {
             viewModel2.toastEmptyField.collectLatest {
-                enterCorrectValues()
+                toastFieldsEmpty()
             }
         }
 
